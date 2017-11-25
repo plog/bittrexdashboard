@@ -9,6 +9,7 @@ class ApplicationRecord < ActiveRecord::Base
   HOSTV2  = 'https://bittrex.com/Api/v2.0'
   KEY     = Rails.application.secrets.bittrex_api_key
   SEC     = Rails.application.secrets.bittrex_api_secret
+  DEMO    = 0.2
 
   self.abstract_class = true
 

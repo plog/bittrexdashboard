@@ -15,7 +15,7 @@ class Wallet < ApplicationRecord
 		wallet.each do |w|
 			currency = {
 				:currency => w["Currency"],
-				:balance => w["Balance"],
+				:balance => w["Balance"] * DEMO,
 				:available => w["Available"],
 				:pending => w["Pending"]
 			}
