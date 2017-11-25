@@ -1,0 +1,36 @@
+<div class="card row3">
+	<div class="card-header">
+		<h4><i class="fa fa-book" aria-hidden="true"></i> Orders History</h4>
+	</div>
+	<div class="card-body">
+		<table class="table table-striped small sortable">
+			<tr>
+				<th>Date Opened</th>
+				<th>Date Closed</th>
+				<th>Exchange</th>
+				<th>Q</th>
+				<th>Bid/Ask</th>
+				<th>tot</th>
+				<th>Last</th>
+				<th>Comm</th>
+			</tr>
+			<% @history.each do |k,order|%>
+			<% tot = order[:quatity] * order[:limit]%>
+			<tr class="<%= (order[:type] =~ /SELL/ ? "blue" : "gray")%>">
+				<td nowrap><%= Time.parse(order[:timestamp]).strftime("%d-%m-%y %H:%M")%></td>
+				<td nowrap><%= Time.parse(order[:closed]).strftime("%d-%m-%y %H:%M")%></td>
+				<td nowrap><%=linkBxGraph(order[:exchange],order[:type])%></td>
+				<td nowrap><%= fl(order[:quatity])%></td>
+				<td nowrap><%= fl(order[:limit])%></td>
+				<td nowrap><%= fl(order[:limit]*order[:quatity])%></td>
+				<td nowrap><%= fl(getticker(order[:exchange])) %></td>
+				<td nowrap><%= fl(order[:commission])%></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+	<div class="card-footer text-center small">
+		<%=linkBxGraph("SELL","SELL")%> | <%=linkBxGraph("BUY","BUY")%> 
+	</div>
+
+</div>

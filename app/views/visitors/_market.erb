@@ -1,0 +1,48 @@
+<div class="card row1">
+	<div class="card-header">
+		<h4><i class="fa fa-money" aria-hidden="true"></i> Market</h4>
+	</div>
+	<div class="card-body row1">
+		<table class="table table-striped small sortable">
+			<tr>
+				<th>Info</th>
+				<th>Market</th>
+				<th>name</th>
+				<th>Last</th>
+				<th>Prev</th>
+				<th>%</th>
+			</tr>
+			<% @markets.each do |k,market|%>
+			<tr class="<%= (market[:perc]>0 ? "green" : "red")%>">
+				<td nowrap>
+					<a href="https://bittrex.com/Market/Index?MarketName=<%= k %>" target="_blank"><i class="fa fa-line-chart" aria-hidden="true"></i></a>&nbsp;&nbsp;
+					<a href="https://www.google.com/search?q=<%=market[:namelong]%>+coin&dcr=0&tbs=qdr:w&sa=X" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>&nbsp;&nbsp;
+					<a href="https://twitter.com/search?f=tweets&vertical=default&q=<%=market[:namelong]%>&src=typd" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>&nbsp;
+				</td>
+				<td nowrap>
+					<a href="#" onclick="setTrade('<%= k %>',1,<%= market[:last] %>)"><%= k %></a>
+				</td>
+				<td nowrap><%= market[:namelong].truncate(14)%></td>
+				<td nowrap><%= fl(market[:last]) %></td>
+				<td nowrap><%= fl(market[:prevday]) %></td>
+				<td nowrap><%= upOrDown(market[:perc])%></td>
+			</tr>
+			<script type="text/javascript">
+				market['<%= k %>']=<%=market[:last]%>;
+			</script>
+			<% end %>
+		</table>
+	</div>
+	<div class="card-footer text-center">
+		<table class="table small" border="1" style="margin:0;margin-left:10px;margin-right:10px;padding:0;border:none">
+			<tr class="text-left">
+				<th class="text-left">&nbsp;&nbsp;&nbsp;</th>
+				<th class="text-left">Market</th>
+				<th class="text-left">&nbsp;&nbsp;&nbsp;</th>
+				<th class="text-left">&nbsp;Last</th>
+				<th class="text-left">Prev</th>
+				<th class="text-left">%</th>
+			</tr>
+		</table>
+	</div>
+</div>

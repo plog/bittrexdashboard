@@ -1,0 +1,23 @@
+<div class="card">
+	<div class="card-header tools">
+		<h4><i class="fa fa-dashboard" aria-hidden="true"></i> Tools</h4>
+	</div>
+	<div class="card-body" id="cardTools">
+		<div class="calcInput" id="currencyCalc"></div>
+		<div class="calcInput" id="btcCalc"></div>
+		<div class="calcInput" id="usdtCalc"></div>
+
+		<script type="text/javascript">
+			$( document ).ready(function() {
+				console.log(market['BTC-OMG']);
+				$( "#currency" ).blur(function() {
+					console.log(market['BTC-OMG']);
+				});
+			});
+		</script>
+		<%= @b %>
+	</div>
+	<div class="card-footer text-center">
+		<p> </p>
+	</div>
+</div>

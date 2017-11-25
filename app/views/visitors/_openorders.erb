@@ -1,0 +1,101 @@
+<div class="card">
+	<div class="card-header">
+		<h4><i class="fa fa-folder-open" aria-hidden="true"></i> Open Orders</h4>
+	</div>
+	<div class="card-body">
+		<%
+		totBtc = 0
+		totUsd = 0
+		totEth = 0
+		totBtcLast = 0
+		totUsdLast = 0
+		totEthLast = 0
+		usdBtc  = @markets["USDT-BTC"][:last]
+		usdEth  = @markets["USDT-ETH"][:last]
+		%>
+		<table class="table table-striped small sortable">
+			<tr>
+				<th>Date open</th>
+				<th>Exchange</th>
+				<th>Q</th>
+				<th>Bid/Ask</th>
+				<th>Last</th>
+				<th>Cond</th>
+				<th>Trend</th>
+				<th>Delta</th>
+			</tr>
+			<% @orders.each do |k,order|%>
+			<%
+			isBtc = order[:exchange].include?('BTC-')
+			isUsd = order[:exchange].include?('USDT-')
+			isEth = order[:exchange].include?('ETH-')
+			last  = getticker(order[:exchange])
+			prev  = order[:limit]
+			delta = ((prev/last)*100)-100
+			trend = gettickerVar(order[:exchange])
+			exch  = order[:exchange]
+			quan  = order[:quantity]
+			bid   = order[:limit]
+			if isBtc
+				totBtc 		+= bid*quan
+				totBtcLast 	+= last*quan
+			elsif isUsd
+				totUsd 		+= bid*quan
+				totUsdLast 	+= last*quan
+			elsif isEth
+				totEth 		+= bid*quan
+				totEthLast 	+= last*quan
+			end
+			boundaries = Orderbook.getboundaries(exch)
+			buy = boundaries[:buy]
+			sell= boundaries[:sell]
+			%>
+			<tr class="<%= (trend>0 ? "green" : "red")%>">
+				<td nowrap><%= Time.parse(order[:opened_at]).strftime("%d-%m-%y %H:%M")%></td>
+				<td nowrap><%=linkBxGraph(exch,order[:ordertype])%></td>
+				<td nowrap><%= calcQ(exch,bid,last,quan)%></td>
+				<td nowrap><%= fl(order[:limit])%></td>
+				<td nowrap><%= fl(last) %></td>
+				<td nowrap><%= displayCondition(order)%></td>
+				<td nowrap><%= raw "#{fl(sell)} <i class='fa fa-arrows-h' aria-hidden='true'></i> #{fl(buy)}"%></td>
+				<td nowrap><i class="fa fa-arrows-h" aria-hidden="true"></i> <%= fl(delta) %>%</td>
+			</tr>
+			<% end %>
+			<%
+			granTotUsd = (totBtc * (usdBtc)) + (totEth * (usdEth)) + totUsd
+			granTotUsdLast = (totBtcLast * (usdBtc)) + (totEthLast * (usdEth)) + totUsdLast
+			%>
+
+		</table>
+	</div>
+	<div class="card-footer text-center">
+		<table class="table small" border="1" style="margin:0;margin-left:10px;margin-right:10px;padding:0;border:none">
+			<tr class="text-left">
+				<th class="text-left" nowrap>
+					<%=fl(totBtcLast)%>&nbsp;BTC
+					<i class='fa fa-arrows-h' aria-hidden='true'></i>
+					<%=fl(totBtc)%> 
+				</th>
+				<th class="text-left" nowrap>
+					<%=fl(totUsdLast)%>&nbsp;USDT
+					<i class='fa fa-arrows-h' aria-hidden='true'></i>
+					<%=fl(totUsd)%>
+				</th>
+				<th class="text-left" nowrap>
+					<%=fl(totEthLast)%>&nbsp;ETH
+					<i class='fa fa-arrows-h' aria-hidden='true'></i>
+					<%=fl(totEth)%>
+				</th>
+				<th class="text-left" nowrap>
+					<%=fl(granTotUsd)%>
+					<i class='fa fa-arrows-h' aria-hidden='true'></i>
+					<%=fl(granTotUsdLast)%>&nbsp;USDT
+				</th>
+				<th class="text-left" nowrap>
+					<%= fl((granTotUsd-granTotUsdLast)/granTotUsdLast * 100) %>%
+				</th>
+			</tr>
+		</table>
+	</div>
+
+</div>

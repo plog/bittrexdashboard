@@ -1,0 +1,41 @@
+<div class="card row1">
+	<div class="card-header">
+		<h4><i class="fa fa-bitcoin" aria-hidden="true"></i> Wallet</h4>
+	</div>
+	<div class="card-body row1">
+		<table class="table table-striped small sortable">
+			<tr>
+				<th>Currency</th>
+				<th>Balance</th>
+				<th>BTC</th>
+				<th>USDT</th>
+				<th>Ratio</th>
+			</tr>
+			<% 
+			totbtc = 0 
+			totusd = 0
+			@wallet.each do |k,wal|
+				balance = wal[:balance]
+				valbtc = Wallet.valBtc(balance,wal[:currency],@markets)
+				valusd = Wallet.valUsd(balance,wal[:currency],@markets)
+				totbtc += valbtc
+				totusd += valusd
+				if valusd > 0.5
+				%>
+				<tr>
+					<td><%= wal[:currency]%></td>
+					<td><%= fl(wal[:balance])   if wal[:balance] >0%></td>
+					<td><%= fl(valbtc) %></td>
+					<td><%= fl(valusd) %></td>
+					<td><%= Wallet.ratio(wal[:currency],@wallet,@markets) %>%</td>
+				</tr>
+				<% end %>
+			<% end %>
+		</table>
+	</div>
+	<div class="card-footer text-center small" style="font-size: 74%;">
+				<b><%= fl(totbtc) %></b> BTC&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; 
+				<b><%= fl(totusd) %></b> USDT
+	</div>
+	
+</div>

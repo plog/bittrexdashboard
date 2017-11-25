@@ -1,0 +1,13 @@
+<!-- http://sciruby.com/blog/2017/09/01/gsoc-2017-data-visualization-using-daru-view/ -->
+<!-- http://nbviewer.jupyter.org/github/shekharrajak/daru-view/blob/master/spec/dummy_iruby/Google%20Chart%20%7C%20Candlestick%20Chart.ipynb -->
+<!-- http://eewang.github.io/blog/2013/02/20/how-to-visualize-data-with-google-charts/ -->
+<!-- http://www.rubydoc.info/gems/daru/0.1.4.1 -->
+<div class="card">
+	<div class="card-header">
+		<h4>Graph</h4>
+	</div>
+	<div class="card-body">
+		<% history = History.where("name='BTC-OMG'").all %>
+		<%=raw @line_basic.div %>
+	</div>
+</div>

@@ -1,0 +1,171 @@
+/*http://www.color-hex.com/color-palette/5452*/
+body {
+   font-size: 80%;
+   line-height: 2;
+}
+#currencyCalc{
+  font-weight: bold;
+}
+#trUnits, #trBid{
+  width:70px;
+}
+form.trade{
+  margin-top:10px;
+}
+form.trade .form-control {
+    font-size: 0.6rem;
+    padding: 6px;
+}
+.btn-sm, .btn-group-sm > .btn, .btn-group-sm > .submit {
+    padding: 0.1rem 0.5rem;
+    font-size: 0.575rem;
+    line-height: 2.5;
+    border-radius: 0.15rem;
+    padding-bottom: 0px;
+}
+header{
+	background-color: #333;
+}
+.container-fluid{
+  margin-top:30px;
+  padding-left:5%;
+  padding-right:5%;
+}
+h4{
+	margin:0;
+	font-size: 120%;
+}
+.form-control{
+	font-size: 0.6rem;
+	padding: 3px;
+}
+
+tr.green td.trend, tr.green td.trend a {color:green;}
+tr.red   td.trend, tr.red   td.trend a {color:red;}
+tr.blue td , tr.blue  td a {color:#933561;}
+tr.gray td , tr.gray  td a {color:#066606;}
+div.card-footer.text-center table.table.small tbody tr th {
+	border: none;
+	font-size: 95%;
+}
+div.card-body table td{
+	font-weight: bold;
+	line-height: 1.5;
+}
+.card-body{
+  padding-top: 0;
+}
+.card-header{
+	padding:6px;
+	padding-left: 20px;
+	background-color: #005b96;
+	color: white;
+}
+.card-header.tools{
+  background-color: #011f4b;
+}
+.card{
+	margin-bottom:10px;
+	height:150px;
+}
+.card.row1 {
+	height:200px;
+}
+.card-body.row1 {
+	max-height:200px;
+	overflow: auto;
+}
+.card.row3 {
+  overflow: none;
+}
+
+
+.card-body {
+  overflow: auto;
+}
+
+.card-footer {
+    padding: 0.3rem 0.50rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.table thead th{
+  border:none;
+}
+.table td, .table th {
+  padding: 0;
+  padding-left: 5px;
+  vertical-align: top;
+  border-top: 1px solid #eceeef;
+}
+.table.small td{
+	font-size: 95%
+}
+.col,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8{
+	margin:0;
+}
+a, a:visited{
+	color:#6497b1;
+}
+
+.navbar-brand span {
+    font-size: 110%;
+    color: #fff;
+    font-weight: bold;
+}
+
+.calcInput br {
+    content: " ";
+    display: block;
+    margin: 0.25em 0;
+}
+.calcInput hr {
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+.calcInput h6 {
+    margin-top: 0.4em;
+    font-size: 110%;
+}
+/*******************************************/
+.navbar-custom {
+    background-color: #011f4b;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255,255,255,.8);
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}
+
+/* for dropdown only - change the color of droodown */
+.navbar-custom .dropdown-menu {
+    background-color: #ff5500;
+}
+.navbar-custom .dropdown-item {
+    color: #ffffff;
+}
+.navbar-custom .dropdown-item:hover,
+.navbar-custom .dropdown-item:focus {
+    color: #333333;
+    background-color: rgba(255,255,255,.5);
+}
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .column, .form, .form-centered, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 6px;
+    padding-left: 6px;
+}

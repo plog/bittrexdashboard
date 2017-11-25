@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Market: MyString
+  Order: MyString
+  Wallet: MyString
+
+two:
+  Market: MyString
+  Order: MyString
+  Wallet: MyString
